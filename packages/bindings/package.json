@@ -1,5 +1,5 @@
 {
-  "name": "@serialport/bindings",
+  "name": "@mateuszzajacs/bindings",
   "version": "8.0.4",
   "main": "lib",
   "keywords": [
@@ -20,9 +20,9 @@
     "node": ">=8.6.0"
   },
   "scripts": {
-    "install": "prebuild-install --tag-prefix @serialport/bindings@ || node-gyp rebuild",
+    "install": "prebuild-install --tag-prefix @mateuszzajacs/bindings@ || node-gyp rebuild",
     "lint": "cc --verbose",
-    "prebuild": "prebuild --all --force --strip --verbose --tag-prefix @serialport/bindings@",
+    "prebuild": "prebuild --all --force --strip --verbose --tag-prefix @mateuszzajacs/bindings@",
     "rebuild": "node-gyp rebuild"
   },
   "publishConfig": {
@@ -31,7 +31,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/serialport/node-serialport.git"
+    "url": "https://github.com/MateuszZajacS/node-serialport.git"
   },
   "gypfile": true,
   "cc": {
