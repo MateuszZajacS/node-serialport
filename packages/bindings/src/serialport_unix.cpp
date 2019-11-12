@@ -217,23 +217,28 @@ int setup(int fd, OpenBaton *data) {
   switch (data->parity) {
   case SERIALPORT_PARITY_NONE:
     options.c_cflag &= ~PARENB;
-    // options.c_cflag &= ~CSTOPB;
-    // options.c_cflag &= ~CSIZE;
-    // options.c_cflag |= CS8;
+    options.c_cflag &= ~PARODD;
+    options.c_cflag &= ~CMSPAR;
     break;
-  case SERIALPORT_PARITY_ODD:
+  case SERIALPORT_PARITY_MARK:
     options.c_cflag |= PARENB;
     options.c_cflag |= PARODD;
-    // options.c_cflag &= ~CSTOPB;
-    // options.c_cflag &= ~CSIZE;
-    // options.c_cflag |= CS7;
+    options.c_cflag |= CMSPAR;
     break;
   case SERIALPORT_PARITY_EVEN:
     options.c_cflag |= PARENB;
     options.c_cflag &= ~PARODD;
-    // options.c_cflag &= ~CSTOPB;
-    // options.c_cflag &= ~CSIZE;
-    // options.c_cflag |= CS7;
+    options.c_cflag &= ~CMSPAR;
+    break;
+  case SERIALPORT_PARITY_ODD:
+    options.c_cflag |= PARENB;
+    options.c_cflag |= PARODD;
+    options.c_cflag &= ~CMSPAR;
+    break;
+  case SERIALPORT_PARITY_SPACE:
+    options.c_cflag |= PARENB;
+    options.c_cflag &= ~PARODD;
+    options.c_cflag |= CMSPAR;
     break;
   default:
     snprintf(data->errorString, sizeof(data->errorString), "Invalid parity setting %d", data->parity);
